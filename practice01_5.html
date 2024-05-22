@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number" id="num1" placeholder="Nhập điểm bài kiểm tra">
+    <input type="number" id="num2" placeholder="Nhập điểm bài giữa kỳ">
+    <input type="number" id="num3" placeholder="Nhập điểm bài cuối kỳ"><br><br>
+    <button onclick="getRank()">Xếp loại học sinh</button>
+    <button type="reset">Reset</button>
+    <p id="sum"></p>
+    <p id="rank"></p>
+    <script>
+        function getRank() {
+            let num1 = document.getElementById("num1").value;
+            let num2 = document.getElementById("num2").value;
+            let num3 = document.getElementById("num3").value;
+            let sum = parseFloat(num1) + parseFloat(num2) + parseFloat(num3);
+            
+            if (num1 < 0 || num2 < 0 || num3 < 0 || num1 > 10 || num2 > 10 || num3 > 10) {
+                document.getElementById("rank").textContent = "Điểm vừa nhập không hợp lệ!"
+            } else {
+                document.getElementById("sum").textContent = "Tổng điểm 3 bài kiểm tra là: "+sum;
+                if (num1 < 2 || num2 < 2 || num3 < 2) {
+                    document.getElementById("rank").textContent = "Xếp loại kém do có bài kiểm tra thấp hơn 3 điểm";
+                } else if (num1 >= 2 && num2 >= 2 && num3 >= 2) {
+                    if (sum >= 5 && sum < 15) {
+                        document.getElementById("rank").textContent = "Xếp loại yếu";
+                    } else if (sum >= 15 && sum < 20) {
+                        document.getElementById("rank").textContent = "Xếp loại trung bình";
+                    } else if (sum >= 20 && sum < 25) {
+                        document.getElementById("rank").textContent = "Xếp loại khá"
+                    } else {
+                        document.getElementById("rank").textContent = "Xếp loại giỏi"
+                    }
+                }
+            }
+            
+        }
+    </script>
+</body>
+
+</html>

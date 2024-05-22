@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number" id="min1" placeholder="Sử dụng nội địa">
+    <input type="number" id="min2" placeholder="Sử dụng ngoại địa"><br><br>
+    <button onclick="getFee()">Tính cước</button>
+    <p id="detail"></p>
+    <p id="fee"></p>
+    <script>
+        function getFee() {
+            let phone1 = document.getElementById("min1").value;
+            let phone2 = document.getElementById("min2").value;
+            const basefee = 70000;
+            let localFee = 0;
+            const foreignFee = phone2 * 5000;
+            document.getElementById("detail").textContent = ("Số phút sử dụng nội địa là " + phone1 + " phút và số phút sử dụng quốc tế là " + phone2 + " phút");
+            if (phone1 < 60) {
+                localFee = phone1 * 1000;
+            } else {
+                localFee = 60 * 1000 + (phone1 - 60) * 500;
+            }
+            let totalFee = parseFloat(basefee) + parseFloat(localFee) + parseFloat(foreignFee);
+            document.getElementById("fee").textContent = "Tổng cước phí sử dụng điện thoại là: " + totalFee + "VNĐ";
+        }
+    </script>
+</body>
+
+</html>

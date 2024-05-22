@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="ds" placeholder="Doanh số của nhân viên" onchange="getFee()">
+    <p id="fee"></p>
+    <script>
+        function getFee(){
+            let ds = parseFloat(document.getElementById("ds").value);
+            if (ds<1000000){
+                document.getElementById("fee").textContent = "Nhân viên không có thưởng!";
+            } else if (ds>=1000000 && ds<5000000){
+                document.getElementById("fee").textContent = "Thưởng của nhân viên là 5%: "+(ds*5/100)+"Đ";
+            } else if (ds>=5000000 && ds<10000000){
+                document.getElementById("fee").textContent = "Thưởng của nhân viên là 8%: "+(ds*8/100)+"Đ";
+            } else if (ds>=10000000 && ds <20000000){
+                document.getElementById("fee").textContent = "Thưởng của nhân viên là 12%: "+(ds*12/100)+"Đ";
+            } else if (ds>=20000000 && ds < 40000000){
+                document.getElementById("fee").textContent = "Thưởng của nhân viên là 15%: "+(ds*15/100)+"Đ";
+            } else if (ds>=40000000 && ds<80000000){
+                document.getElementById("fee").textContent = "Thưởng của nhân viên là 20%: "+(ds*20/100)+"Đ";
+            } else if (ds>=80000000 && ds<150000000){
+                document.getElementById("fee").textContent = "Thưởng của nhân viên là 25%: "+(ds*25/100)+"Đ";
+            } else {
+                document.getElementById("fee").textContent = "Thưởng của nhân viên là 30%: "+(ds*30/100)+"Đ";
+            }
+
+        }
+    </script>
+</body>
+</html>
